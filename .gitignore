@@ -1,0 +1,40 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+### post ###
+/src/main/java/com/projecthairdresser/app/springboothd/controllers/HomeController.java
+/src/main/java/com/projecthairdresser/app/springboothd/models/ClienteModel.java
+/src/main/java/com/projecthairdresser/app/springboothd/models/PeluqueroModel.java
+/src/main/java/com/projecthairdresser/app/springboothd/models/PersonaModel.java
+/src/main/java/com/projecthairdresser/app/springboothd/models/TurnoModel.java
+/src/main/resources/templates/error
+/src/main/resources/templates/home

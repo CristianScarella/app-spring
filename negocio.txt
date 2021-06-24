@@ -1,0 +1,8 @@
+antes de conceder cada turno se debe consultar la disponibilidad
+del peluquero a esa hora tanto el usuario como en el back.
+Consultando todos los turnos asignados
+en esa fecha discriminado por peluquero, dia de la fecha, y hora.
+
+agregar pedido, en cada pedido va a tener un tiempo determinado,
+que va a influenciar de acuerdo a la hora final.va a tener una descripcion,
+un precio por cada pedido. ej tintura $1000 2hs
