@@ -6,8 +6,11 @@ public class ViewRouteHelper {
 	public static final String TURNO = "home/turno";
 	public static final String NEW_TURNO = "home/newturno";
 	
-	public static final String LOCAL = "local/add";
-	public static final String NEW_LOCAL = "local/newlocal";
-	public static final String LISTAR_LOCAL = "local/listar";
+	public static final String NEW_LOCAL = "local/crear";
+	public static final String LISTAR_LOCAL = "local/index";
+	
+	
+	//redirects
+	public final static String LOCAL_ROOT = "/local";
 
 }
