@@ -3,6 +3,7 @@ package com.projecthairdresser.app.springboothd.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.projecthairdresser.app.springboothd.helpers.ViewRouteHelper;
 import com.projecthairdresser.app.springboothd.models.LocalModel;
@@ -24,9 +26,10 @@ import com.projecthairdresser.app.springboothd.services.ILocalService;
 public class LocalController {
 
 	@Autowired
+	@Qualifier("localService")
 	private ILocalService localService;
 	
-	@GetMapping("/listar")
+	@GetMapping({"/index",""})
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LISTAR_LOCAL);			
 		mAV.addObject("locales", localService.getAll());
@@ -58,6 +61,20 @@ public class LocalController {
 //		}
 //		return mV;
 //	}
+	
+	@GetMapping("/crear")
+	public ModelAndView create() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.NEW_LOCAL);
+		mAV.addObject("local", new LocalModel());
+		return mAV;
+	}
+	
+	
+	@PostMapping("/save")
+	public RedirectView create(@ModelAttribute("local") LocalModel LocalModel) {
+		localService.insertOrUpdate(LocalModel);
+		return new RedirectView(ViewRouteHelper.LOCAL_ROOT);
+	}
 	
 	
 }

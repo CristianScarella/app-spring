@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.projecthairdresser.app.springboothd.converters.LocalConverter;
 import com.projecthairdresser.app.springboothd.entities.Local;
+import com.projecthairdresser.app.springboothd.models.LocalModel;
 import com.projecthairdresser.app.springboothd.repositories.ILocalRepository;
 import com.projecthairdresser.app.springboothd.services.ILocalService;
 
@@ -17,6 +19,10 @@ public class LocalService implements ILocalService {
 	@Qualifier("localRepository")
 	private ILocalRepository localRepository;
 	
+	@Autowired
+	@Qualifier("localConverter")
+	private LocalConverter localConverter;
+	
 //	@Autowired
 //	@Qualifier("localRepository")
 //	private LocalConverter localConverter;
@@ -25,6 +31,12 @@ public class LocalService implements ILocalService {
 	@Override
 	public List<Local> getAll() {
 		return localRepository.findAll();
+	}
+
+	@Override
+	public LocalModel insertOrUpdate(LocalModel localModel) {
+		Local local = localRepository.save(localConverter.ModelToEntity(localModel));
+		return localConverter.entityToModel(local);
 	}
 
 }

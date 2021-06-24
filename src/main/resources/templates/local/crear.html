@@ -2,38 +2,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Agregar locales</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
 </head>
 <body>
 	<div class="container mt-4">
-		<form action="#" th:action="@{save}" th:object="${local}"
-			method="post">
-			<label for="exampleInputEmail" class="form-label"> </label> Telefono:
-			<input type="text" th:field="*{telefono}" placeholder="1122334455"
-				class="form-control" />
+		<div class="col-sm-6">
+			<form action="#" th:action="@{save}" th:object="${local}"
+				method="post">
+				<div class="card">
+					<div class="card-header">
+						<h3>Local</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<label class="form-label">Telefono: </label> <input type="text"
+								th:field="*{telefono}" placeholder="1122334455"
+								class="form-control" />
 
-			<p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
-			<p>
-				Direccion: <input type="text" th:field="*{direccion}"
-					placeholder="Calle 0000" />
-			</p>
-			<p th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></p>
-			<p>
-				latitud: <input type="number" step="0.1" placeholder="80.0"
-					th:field="*{latitud}" />
-			</p>
-			<p th:if="${#fields.hasErrors('latitud')}" th:errors="*{latitud}"></p>
-			<p>
-				longitud: <input type="number" step="0.1" placeholder="80.0"
-					th:field="*{longitud}" />
-			</p>
-			<p th:if="${#fields.hasErrors('longitud')}" th:errors="*{longitud}"></p>
+							<p th:if="${#fields.hasErrors('telefono')}"
+								th:errors="*{telefono}"></p>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Direccion: </label> <input type="text"
+								th:field="*{direccion}" placeholder="Calle 0000"
+								class="form-control" />
 
+							<p th:if="${#fields.hasErrors('direccion')}"
+								th:errors="*{direccion}"></p>
 
+						</div>
+						<div class="form-group">
+							<label class="form-label">Latitud: </label> <input type="number"
+								step="0.1" placeholder="80.0" th:field="*{latitud}"
+								class="form-control" />
 
+							<p th:if="${#fields.hasErrors('latitud')}" th:errors="*{latitud}"></p>
 
-			<input type="submit" />
-		</form>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Longitud: </label> <input type="number"
+								step="0.1" placeholder="80.0" th:field="*{longitud}"
+								class="form-control" />
+
+							<p th:if="${#fields.hasErrors('longitud')}"
+								th:errors="*{longitud}"></p>
+
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="submit" value="Agregar" class="btn btn-success">
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
