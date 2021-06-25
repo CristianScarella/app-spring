@@ -39,4 +39,9 @@ public class LocalService implements ILocalService {
 		return localConverter.entityToModel(local);
 	}
 
+	@Override
+	public LocalModel findById(int id) {
+		return localConverter.entityToModel(localRepository.findById(id));
+	}
+
 }

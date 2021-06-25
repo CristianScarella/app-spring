@@ -20,11 +20,12 @@
 			</thead>
 			<tbody>
 				<tr th:each="local:${locales}">
+					<td th:text="${local.id}"></td>
 					<td th:text="${local.telefono}"></td>
 					<td th:text="${local.direccion}"></td>
 					<td th:text="${local.latitud}"></td>
 					<td th:text="${local.longitud}"></td>
-					<td class="text-center"><a class="btn btn-warning">Modificar</a>
+					<td class="text-center"><a th:href="@{/local/edit/{id} (id=${local.id})}" class="btn btn-warning">Modificar</a>
 					<a class="btn btn-danger">Eliminar</a></td>
 				</tr>
 

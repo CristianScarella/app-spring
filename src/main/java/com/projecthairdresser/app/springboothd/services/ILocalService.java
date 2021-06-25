@@ -10,4 +10,6 @@ public interface ILocalService {
 	public List<Local> getAll();
 	
 	public LocalModel insertOrUpdate(LocalModel localModel);
+	
+	public LocalModel findById(int id);
 }
