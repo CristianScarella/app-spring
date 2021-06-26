@@ -44,4 +44,14 @@ public class LocalService implements ILocalService {
 		return localConverter.entityToModel(localRepository.findById(id));
 	}
 
+	@Override
+	public boolean remove(int id) {
+		try {
+			localRepository.deleteById(id);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
+
 }

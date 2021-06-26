@@ -8,10 +8,10 @@ public class LocalModel {
 
 	private int id;
 	@NotEmpty
-	@Pattern(regexp = "[0-9]{10}")
+	//@Pattern(regexp = "[0-9]{10}")
 	private String telefono;
 	@NotNull
-	@Pattern(regexp = "[a-zA-Z0-9]{4,}")
+	//@Pattern(regexp = "[a-zA-Z0-9]{4,}")
 	private String direccion;
 	@NotNull
 	private Double latitud;

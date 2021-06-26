@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -24,6 +26,7 @@ import com.projecthairdresser.app.springboothd.models.LocalModel;
 import com.projecthairdresser.app.springboothd.services.ILocalService;
 
 @Controller
+@SessionAttributes("local")
 @RequestMapping("/local")
 public class LocalController {
 
@@ -73,17 +76,26 @@ public class LocalController {
 	
 	
 	@PostMapping("/save")
-	public String create(@ModelAttribute("local") LocalModel LocalModel) {
+	public String create(@Valid @ModelAttribute("local") LocalModel LocalModel, SessionStatus sessionStatus) {
+		System.out.println(LocalModel);
 		localService.insertOrUpdate(LocalModel);
+		sessionStatus.setComplete();
 		return "redirect:/local";
 	}
 	
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable int id, Model model) {
-		LocalModel local=localService.findById(id);
-		model.addAttribute("local",local);
 		
+		LocalModel local=localService.findById(id);
+		model.addAttribute("local", local);
 		return "local/crear";
+	}
+	
+	@GetMapping("/eliminar/{id}")
+	public String eliminar(@PathVariable int id, Model model) {
+		
+		localService.remove(id);
+		return "redirect:/local";
 	}
 	
 }
