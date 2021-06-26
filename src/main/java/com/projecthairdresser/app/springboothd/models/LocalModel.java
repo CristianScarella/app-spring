@@ -1,21 +1,31 @@
 package com.projecthairdresser.app.springboothd.models;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class LocalModel {
 
 	private int id;
+	
 	@NotEmpty
-	//@Pattern(regexp = "[0-9]{10}")
+	@Size(min=8,max=10)
+	@Pattern(regexp= "[0-9]{10}")
 	private String telefono;
-	@NotNull
-	//@Pattern(regexp = "[a-zA-Z0-9]{4,}")
+	
+	@NotEmpty
+	@Size(min=3,max=10)
+//	@Pattern(regexp= "[a-zA-Z_0-9]{3,20}[\\s][0-9]{1,5}")
 	private String direccion;
+	
 	@NotNull
+	@DecimalMin(value = "0.01")
 	private Double latitud;
+	
 	@NotNull
+	@DecimalMin(value = "0.01")
 	private Double longitud;
 	
 	public LocalModel() {}
