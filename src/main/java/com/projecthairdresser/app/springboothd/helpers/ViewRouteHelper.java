@@ -13,5 +13,6 @@ public class ViewRouteHelper {
 	
 	//redirects
 	public final static String LOCAL_ROOT = "/local";
+	public final static String LOCAL_REDIRECT= "redirect:/local";
 
 }

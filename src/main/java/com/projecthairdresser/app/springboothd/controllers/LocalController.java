@@ -2,7 +2,6 @@ package com.projecthairdresser.app.springboothd.controllers;
 
 import javax.validation.Valid;
 
-import org.hibernate.boot.model.relational.Loggable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -76,26 +75,37 @@ public class LocalController {
 	
 	
 	@PostMapping("/save")
-	public String create(@Valid @ModelAttribute("local") LocalModel LocalModel, SessionStatus sessionStatus) {
-		System.out.println(LocalModel);
+	public String create(@Valid @ModelAttribute("local") LocalModel LocalModel, BindingResult bindingResult, SessionStatus sessionStatus) {
+
+		if(bindingResult.hasErrors()) {
+			return ViewRouteHelper.NEW_LOCAL;
+		}
 		localService.insertOrUpdate(LocalModel);
 		sessionStatus.setComplete();
-		return "redirect:/local";
+		return ViewRouteHelper.LOCAL_REDIRECT;
 	}
 	
+//	@GetMapping("/edit/{id}")
+//	public String edit(@PathVariable int id, Model model) {
+//		
+//		LocalModel local=localService.findById(id);
+//		model.addAttribute("local", local);
+//		return "local/crear";
+//	}
 	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable int id, Model model) {
-		
+	public ModelAndView edit(@PathVariable int id) {
+		ModelAndView mV = new ModelAndView(ViewRouteHelper.NEW_LOCAL);
 		LocalModel local=localService.findById(id);
-		model.addAttribute("local", local);
-		return "local/crear";
+		mV.addObject("local", local);
+		//model.addAttribute("local", local);
+		return mV;
 	}
 	
 	@GetMapping("/eliminar/{id}")
-	public String eliminar(@PathVariable int id, Model model) {
+	public RedirectView eliminar(@PathVariable int id, Model model) {
 		
 		localService.remove(id);
-		return "redirect:/local";
+		return new RedirectView(ViewRouteHelper.LOCAL_ROOT);
 	}
 	
 }
