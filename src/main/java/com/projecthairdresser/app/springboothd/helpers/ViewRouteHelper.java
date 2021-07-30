@@ -14,6 +14,9 @@ public class ViewRouteHelper {
 	public static final String USER_LOGIN = "user/login";
 	public static final String USER_LOGOUT = "user/logout";
 	
+	public static final String LISTAR_PELUQUEROS = "persona/empleado/index";
+	public static final String NEW_EMPLEADO = "persona/empleado/crear";
+	
 	//redirects
 	public final static String LOCAL_ROOT = "/local";
 	public final static String LOCAL_REDIRECT= "redirect:/local";
